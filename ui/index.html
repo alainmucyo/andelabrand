@@ -19,19 +19,16 @@
     <nav class="mobile-nav">
         <ul class="mobile-nav-list">
             <li class="nav-item">
-                <a href="index.html">Home</a>
+                <a href="#landing">Home</a>
             </li>
             <li class="nav-item">
-                <a href="#">Services</a>
+                <a href="#section-services">Services</a>
             </li>
             <li class="nav-item">
-                <a href="#">About Me</a>
+                <a href="#section-about">About Me</a>
             </li>
             <li class="nav-item">
-                <a href="#">Portfolio</a>
-            </li>
-            <li class="nav-item">
-                <a href="#">Pricing</a>
+                <a href="#portfolio-section">Portfolio</a>
             </li>
             <li class="nav-item">
                 <a href="#">Contact Me</a>
@@ -53,19 +50,16 @@
     <nav class="nav">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="index.html">Home</a>
+                <a href="#landing">Home</a>
             </li>
             <li class="nav-item">
-                <a href="#">Services</a>
+                <a href="#section-services">Services</a>
             </li>
             <li class="nav-item">
-                <a href="#">About Me</a>
+                <a href="#section-about">About Me</a>
             </li>
             <li class="nav-item">
-                <a href="#">Portfolio</a>
-            </li>
-            <li class="nav-item">
-                <a href="#">Pricing</a>
+                <a href="#portfolio-section">Portfolio</a>
             </li>
             <li class="nav-item">
                 <a href="#">Contact Me</a>
@@ -76,11 +70,10 @@
             <li class="nav-item">
                 <a href="#">Login</a>
             </li>
-
         </ul>
     </nav>
 </div>
-<header class="landing-header">
+<header id="landing" class="landing-header">
 
     <div class="header-details">
         <div class="header-content">
@@ -95,7 +88,7 @@
         </div>
     </div>
 </header>
-<section class="section-services">
+<section id="section-services" class="section-services">
     <div class="services">
         <div class="service">
             <span class="ti-server service-icon"></span>
@@ -158,15 +151,53 @@
         </div>
     </div>
 </section>
-<section class="about-section">
+<section id="section-about" class="about-section">
     <img src="img/pp.jpeg" class="about-img" alt="">
     <div class="about-container">
         <h3 class="about-title">Alain MUCYO - Web & mobile developer</h3>
         <p class="about-text">
-            Motivated web designer and developer with experience creating custom websites through PHP, Laravel, Javascript, Vue JS, MySQL, HTML and CSS. Strong
+            Motivated web designer and developer with experience creating custom websites through PHP, Laravel,
+            Javascript, Vue JS, MySQL, HTML and CSS. I have strong
             collaboration skills and proven history of application development.
         </p>
 
+    </div>
+</section>
+<section id="portfolio-section" class="section-portfolio">
+    <h4>Portfolio</h4>
+    <div class="portfolios">
+        <span class="prev ti-angle-left" onclick="plusSlides(-1)"></span>
+        <div class="portfolio-slides">
+            <div class="portfolio-content slide fade">
+                <img src="img/ishema.png" alt="Image">
+                <div class="portfolio-details">
+                    <div class="portfolio-title">
+                        <h3>Ishema Tickets </h3>
+                        <span class="badge badge-primary">2019</span>
+                    </div>
+                    <p class="portfolio-text">
+                        A platform for online ticket buying, generating and scanning for most popular events in Rwanda.
+                    </p>
+                    <a href="https://ishema.rw/" target="_blank" class="btn btn-primary btn-portfolio">Visit site</a>
+                </div>
+            </div>
+            <div class="portfolio-content slide fade">
+                <img src="img/corona.png" alt="Image">
+                <div class="portfolio-details">
+                    <div class="portfolio-title">
+                        <h3>COVID-19 reporting</h3>
+                        <span class="badge badge-primary">2020</span>
+                    </div>
+                    <p class="portfolio-text">
+                        A live COVID-19 reporting website which shows COVID-19 cases, deaths... all over the world with
+                        focus of Rwanda.
+                    </p>
+                    <a href="http://corona.imenalab.rw/" target="_blank" class="btn btn-primary btn-portfolio">Visit
+                        site</a>
+                </div>
+            </div>
+        </div>
+        <span class="next ti-angle-right" onclick="plusSlides(1)"></span>
     </div>
 </section>
 <footer class="footer">
@@ -186,4 +217,5 @@
     </div>
 </footer>
 </body>
+<script type="text/javascript" src="js/index.js"></script>
 </html>
