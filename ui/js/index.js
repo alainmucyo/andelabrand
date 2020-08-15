@@ -1,12 +1,13 @@
 var slideIndex = 1;
 showSlides(slideIndex);
+setInterval(()=>{
+    plusSlides(1)
+},5000)
 function plusSlides(n) {
-    console.log("clicked")
     showSlides(slideIndex += n);
 }
 
 function showSlides(n) {
-    console.log("Slide index", n);
     var i;
     var slides = document.getElementsByClassName("slide");
     console.log(slides.length);
