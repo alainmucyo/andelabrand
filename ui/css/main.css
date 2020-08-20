@@ -16,7 +16,7 @@
     --color-grey-dark-2: #a0aec0;
     --color-grey-dark-3: #1a202c;
     --color-danger: #e53e3e;
-    --linear-background: linear-gradient(to bottom, #7a19f1, #332179);
+    --linear-background: linear-gradient(to bottom, #664cec, #510bc4);
 }
 
 *,
@@ -72,6 +72,12 @@ body {
 
 .pt-2 {
     padding-top: 2rem;
+}
+.pt-3 {
+    padding-top: 3rem !important;
+}
+.pt-4 {
+    padding-top: 4rem !important;
 }
 
 .mt-2 {
@@ -678,7 +684,8 @@ button{
     Create article page
 */
 .create-article {
-    padding: 8rem 4rem;
+    padding: 5rem;
+    padding-bottom: 8rem;
     background-color: var(--color-grey-light-1);
 }
 
@@ -774,9 +781,14 @@ button{
 }
 
 .article-text {
+    text-align: justify;
     font-size: 1.45rem;
     margin-bottom: .8rem;
     letter-spacing: 1px;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
 }
 
 .article-content {
@@ -784,7 +796,9 @@ button{
 }
 
 .article-btn {
-    text-align: end;
+    /*text-align: end;*/
+    padding-bottom: 2rem;
+    padding-left: 1rem;
 }
 .comments-title{
     font-weight: 700;
@@ -815,6 +829,8 @@ button{
 .comment-body{
     font-size: 1.5rem;
     letter-spacing: .5px;
+    text-align: justify;
+    hyphens: auto;
 }
 .comment-form{
     margin-top: 1rem;

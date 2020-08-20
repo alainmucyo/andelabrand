@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500,700,900" rel="stylesheet">
-    <link href="./css/main.css" rel="stylesheet">
-    <link href="./css/queries.css" rel="stylesheet">
-    <link rel="stylesheet" href="icons/themify-icons.css">
-    <title>Blog</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/admin.css" rel="stylesheet">
+    <link href="../css/queries.css" rel="stylesheet">
+    <link rel="stylesheet" href="../icons/themify-icons.css">
+    <title>Admin</title>
 </head>
 <body>
 <div class="mobile-navigation">
@@ -20,25 +21,19 @@
     <nav class="mobile-nav">
         <ul class="mobile-nav-list">
             <li class="nav-item">
-                <a href="index.html#landing">Home</a>
+                <a href="index.html">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a href="index.html#section-services">Services</a>
+                <a href="create_blog.html">Create blog</a>
             </li>
             <li class="nav-item">
-                <a href="index.html#section-about">About Me</a>
+                <a href="queries.html">Queries</a>
             </li>
             <li class="nav-item">
-                <a href="index.html#portfolio-section">Portfolio</a>
+                <a href="profile.html">Profile</a>
             </li>
             <li class="nav-item">
-                <a href="index.html#contact-me">Contact Me</a>
-            </li>
-            <li class="nav-item">
-                <a href="blog.html">Blog</a>
-            </li>
-            <li class="nav-item">
-                <a href="login.html">Login</a>
+                <a href="../login.html">Logout</a>
             </li>
         </ul>
     </nav>
@@ -51,36 +46,61 @@
     <nav class="nav">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="index.html#landing">Home</a>
+                <a href="index.html">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a href="index.html#section-services">Services</a>
+                <a href="create_blog.html">Create blog</a>
             </li>
             <li class="nav-item">
-                <a href="index.html#section-about">About Me</a>
+                <a href="queries.html">Queries</a>
             </li>
             <li class="nav-item">
-                <a href="index.html#portfolio-section">Portfolio</a>
+                <a href="profile.html">Profile</a>
             </li>
             <li class="nav-item">
-                <a href="index.html#contact-me">Contact Me</a>
-            </li>
-            <li class="nav-item">
-                <a href="blog.html">Blog</a>
-            </li>
-            <li class="nav-item">
-                <a href="login.html">Login</a>
+                <a href="../login.html">Logout</a>
             </li>
         </ul>
     </nav>
 </div>
 <main>
-    <section class="articles">
+    <section class="admin-dashboard">
+        <div class="dashboard-summary">
+            <div class="icon-card icon-card__primary">
+                <span class="ti-heart icon-card__icon"></span>
+                <div class="icon-card__details">
+                    <h4 class="icon-card__number">142</h4>
+                    <span class="icon-card__text">Blogs Likes</span>
+                </div>
+            </div>
+            <div class="icon-card icon-card__secondary">
+                <span class="ti-eye icon-card__icon"></span>
+                <div class="icon-card__details">
+                    <h4 class="icon-card__number">769</h4>
+                    <span class="icon-card__text">Blogs Views</span>
+                </div>
+            </div>
+            <div class="icon-card icon-card__success">
+                <span class="ti-comment-alt icon-card__icon"></span>
+                <div class="icon-card__details">
+                    <h4 class="icon-card__number">24</h4>
+                    <span class="icon-card__text">Comments</span>
+                </div>
+            </div>
+            <div class="icon-card icon-card__blue">
+                <span class="ti-envelope icon-card__icon"></span>
+                <div class="icon-card__details">
+                    <h4 class="icon-card__number">20</h4>
+                    <span class="icon-card__text">Contacts</span>
+                </div>
+            </div>
+        </div>
+        <h2 class="dashboard-title">8 Blog articles</h2>
         <div class="cards">
             <div class="card">
-                <a class="card-img" href="blog_details.html"><img src="img/person2.jpg" alt="Image"></a>
+                <a class="card-img" href="edit_blog.html"><img src="../img/person2.jpg" alt="Image"></a>
                 <div class="card-details">
-                    <a href="blog_details.html" class="card-title">
+                    <a href="edit_blog.html" class="card-title">
                         Lorem ipsum dolor sit amet.
                     </a>
                 </div>
@@ -100,9 +120,9 @@
                 </div>
             </div>
             <div class="card">
-                <a class="card-img" href="blog_details.html"><img src="img/person2.jpg" alt="Image"></a>
+                <a class="card-img" href="edit_blog.html"><img src="../img/person2.jpg" alt="Image"></a>
                 <div class="card-details">
-                    <a href="blog_details.html" class="card-title">
+                    <a href="edit_blog.html" class="card-title">
                         Lorem ipsum dolor sit amet.
                     </a>
                 </div>
@@ -122,9 +142,9 @@
                 </div>
             </div>
             <div class="card">
-                <a class="card-img" href="blog_details.html"><img src="img/person2.jpg" alt="Image"></a>
+                <a class="card-img" href="edit_blog.html"><img src="../img/person2.jpg" alt="Image"></a>
                 <div class="card-details">
-                    <a href="blog_details.html" class="card-title">
+                    <a href="edit_blog.html" class="card-title">
                         Lorem ipsum dolor sit amet.
                     </a>
                 </div>
@@ -144,9 +164,9 @@
                 </div>
             </div>
             <div class="card">
-                <a class="card-img" href="blog_details.html"><img src="img/person2.jpg" alt="Image"></a>
+                <a class="card-img" href="edit_blog.html"><img src="../img/person2.jpg" alt="Image"></a>
                 <div class="card-details">
-                    <a href="blog_details.html" class="card-title">
+                    <a href="edit_blog.html" class="card-title">
                         Lorem ipsum dolor sit amet.
                     </a>
                 </div>
@@ -166,9 +186,9 @@
                 </div>
             </div>
             <div class="card">
-                <a class="card-img" href="blog_details.html"><img src="img/person2.jpg" alt="Image"></a>
+                <a class="card-img" href="edit_blog.html"><img src="../img/person2.jpg" alt="Image"></a>
                 <div class="card-details">
-                    <a href="blog_details.html" class="card-title">
+                    <a href="edit_blog.html" class="card-title">
                         Lorem ipsum dolor sit amet.
                     </a>
                 </div>
@@ -188,9 +208,9 @@
                 </div>
             </div>
             <div class="card">
-                <a class="card-img" href="blog_details.html"><img src="img/person2.jpg" alt="Image"></a>
+                <a class="card-img" href="edit_blog.html"><img src="../img/person2.jpg" alt="Image"></a>
                 <div class="card-details">
-                    <a href="blog_details.html" class="card-title">
+                    <a href="edit_blog.html" class="card-title">
                         Lorem ipsum dolor sit amet.
                     </a>
                 </div>
