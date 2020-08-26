@@ -8,9 +8,14 @@
     <link href="../css/admin.css" rel="stylesheet">
     <link href="../css/queries.css" rel="stylesheet">
     <link rel="stylesheet" href="../icons/themify-icons.css">
+    <link rel="stylesheet" href="../css/loader.css">
     <title>Admin</title>
 </head>
 <body>
+<div id="loader-wrapper">
+    <div class="lds-ripple"><div></div><div></div></div>
+    <h3>Loading...</h3>
+</div>
 <div class="mobile-navigation">
     <input class="nav_checkbox" id="navi-toggle" type="checkbox">
     <label class="mobile-nav-btn" for="navi-toggle">
@@ -33,7 +38,7 @@
                 <a href="profile.html">Profile</a>
             </li>
             <li class="nav-item">
-                <a href="../login.html">Logout</a>
+                <a href="#" onclick="logout()">Logout</a>
             </li>
         </ul>
     </nav>
@@ -58,7 +63,7 @@
                 <a href="profile.html">Profile</a>
             </li>
             <li class="nav-item">
-                <a href="../login.html">Logout</a>
+                <a href="#" onclick="logout()">Logout</a>
             </li>
         </ul>
     </nav>
@@ -66,54 +71,11 @@
 <main>
     <section class="queries-section">
         <h2 class="dashboard-title">Who contacted?</h2>
-        <div class="queries">
-            <div class="query">
-                <h4>
-                    Alain MUCYO
-                </h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi corporis cupiditate dolor ducimus
-                    earum eveniet excepturi in, incidunt magni mollitia pariatur provident, quasi quod reiciendis
-                    repudiandae veritatis vero voluptates!
-                </p>
-                <span>alainmucyo3@gmail.com</span>
-            </div>
-            <div class="query">
-                <h4>
-                    Alain MUCYO
-                </h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi corporis cupiditate dolor ducimus
-                    earum eveniet excepturi in, incidunt magni mollitia pariatur provident, quasi quod reiciendis
-                    repudiandae veritatis vero voluptates!
-                </p>
-                <span>alainmucyo3@gmail.com</span>
-            </div>
-            <div class="query">
-                <h4>
-                    Alain MUCYO
-                </h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi corporis cupiditate dolor ducimus
-                    earum eveniet excepturi in, incidunt magni mollitia pariatur provident, quasi quod reiciendis
-                    repudiandae veritatis vero voluptates!
-                </p>
-                <span>alainmucyo3@gmail.com</span>
-            </div>
-            <div class="query">
-                <h4>
-                    Alain MUCYO
-                </h4>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi corporis cupiditate dolor ducimus
-                    earum eveniet excepturi in, incidunt magni mollitia pariatur provident, quasi quod reiciendis
-                    repudiandae veritatis vero voluptates!
-                </p>
-                <span>alainmucyo3@gmail.com</span>
-            </div>
+        <div class="queries" id="queries">
         </div>
     </section>
 </main>
+
 <footer class="footer">
     <p class="footer-details">
         Copyright &copy; MUCYO M. Alain 2020
@@ -130,5 +92,28 @@
         </a>
     </div>
 </footer>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyA-C-kJkXtxlOBvyjn4VN3RAIOPaGQwLi8",
+        authDomain: "my-brand-2769a.firebaseapp.com",
+        databaseURL: "https://my-brand-2769a.firebaseio.com",
+        projectId: "my-brand-2769a",
+        storageBucket: "my-brand-2769a.appspot.com",
+        messagingSenderId: "136564187312",
+        appId: "1:136564187312:web:d08827f9e4f3a1ffed9b75",
+        measurementId: "G-S68C500M6K"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+</script>
+<script type="text/javascript" src="../js/auth.js"></script>
+<script type="text/javascript" src="../js/admin/queries.js"></script>
+
 </body>
 </html>
