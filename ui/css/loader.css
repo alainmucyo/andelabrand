@@ -7,7 +7,7 @@
     top: 0;
     left: 0;
     height: 100%;
-    z-index: 1000;
+
     width: 100%;
     display: flex;
     justify-content: center;
@@ -16,10 +16,12 @@
 }
 #loader-wrapper{
     background: var(--color-grey-light-2);
+    z-index: 3001;
 }
 #container-loader{
     display: none;
     background-color: rgba(226, 232, 240,.6);
+    z-index: 20;
 }
 #loader-wrapper h3{
     letter-spacing: 2px;
