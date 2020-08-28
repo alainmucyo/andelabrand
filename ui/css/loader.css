@@ -3,7 +3,7 @@
     overflow: hidden !important;
 }
 #loader-wrapper,#container-loader{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -17,8 +17,10 @@
 #loader-wrapper{
     background: var(--color-grey-light-2);
     z-index: 3001;
+    position: fixed;
 }
 #container-loader{
+    position: absolute;
     display: none;
     background-color: rgba(226, 232, 240,.6);
     z-index: 20;
