@@ -103,9 +103,11 @@
                     <form class="comment-form" action="#" onsubmit="addComment(event)" id="comment-form" method="post">
                         <div class="form-group">
                             <input type="text" class="form-input" id="names" placeholder="Names"/>
+                            <span class="text-invalid" id="names_invalid"></span>
                         </div>
                         <div class="form-group">
                             <textarea name="" id="content" class="form-input" placeholder="Leave a comment..."></textarea>
+                            <span class="text-invalid" id="content_invalid"></span>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary" id="submitBtn">Post Comment</button>
@@ -159,5 +161,6 @@
     firebase.analytics();
 </script>
 <!--<script type="text/javascript" src="js/auth.js"></script>-->
+<script type="text/javascript" src="js/tools/form-validator.js"></script>
 <script type="text/javascript" src="js/blog/show.js"></script>
 </html>

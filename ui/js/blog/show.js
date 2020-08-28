@@ -81,6 +81,10 @@ function addComment(event) {
     var names = document.getElementById("names");
     var content = document.getElementById("content");
     var submitBtn = document.getElementById("submitBtn");
+    var namesValid = isInputValid(names, false, 3, 100);
+    var contentValid = isInputValid(content, false, 5);
+    if (!namesValid || !contentValid) return;
+
     var oldText = submitBtn.innerText;
     submitBtn.innerText = "Commenting..."
     db.collection("comments").add({
