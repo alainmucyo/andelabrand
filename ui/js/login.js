@@ -25,7 +25,7 @@ function login(event) {
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then(function (resp) {
             loader.style.display = "none";
-            window.location = "admin";
+            window.location = "admin/index.html";
         })
         .catch(function (error) {
             loader.style.display = "none";

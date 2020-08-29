@@ -134,16 +134,3 @@ function addLike() {
             likes.innerText = Number(likes.innerText) + 1
         })
 }
-
-function deleteArticle(event) {
-    event.preventDefault();
-    if (!confirm("Delete this article?")) return;
-    var deleteBtn = document.getElementById("delete");
-    deleteBtn.innerText = "Deleting....";
-    db.collection("articles").doc(article).delete().then(function () {
-        location = "index.html";
-    }).catch(function (error) {
-        deleteBtn.innerText = "Delete";
-        alert("Error while deleting!")
-    });
-}
