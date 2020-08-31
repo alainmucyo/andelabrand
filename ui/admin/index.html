@@ -7,10 +7,15 @@
     <link href="../css/main.css" rel="stylesheet">
     <link href="../css/admin.css" rel="stylesheet">
     <link href="../css/queries.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/loader.css">
     <link rel="stylesheet" href="../icons/themify-icons.css">
     <title>Admin</title>
 </head>
 <body>
+<div id="loader-wrapper">
+    <div class="lds-ripple"><div></div><div></div></div>
+    <h3>Loading...</h3>
+</div>
 <div class="mobile-navigation">
     <input class="nav_checkbox" id="navi-toggle" type="checkbox">
     <label class="mobile-nav-btn" for="navi-toggle">
@@ -95,141 +100,8 @@
                 </div>
             </div>
         </div>
-        <h2 class="dashboard-title">8 Blog articles</h2>
-        <div class="cards">
-            <div class="card">
-                <a class="card-img" href="edit_blog.html"><img src="../img/person2.jpg" alt="Image"></a>
-                <div class="card-details">
-                    <a href="edit_blog.html" class="card-title">
-                        Lorem ipsum dolor sit amet.
-                    </a>
-                </div>
-                <div class="card-icons">
-                    <div class="icon">
-                        <i class="ti-heart"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                    <div class="icon">
-                        <i class="ti-comment"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                    <div class="icon">
-                        <i class="ti-eye"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <a class="card-img" href="edit_blog.html"><img src="../img/person2.jpg" alt="Image"></a>
-                <div class="card-details">
-                    <a href="edit_blog.html" class="card-title">
-                        Lorem ipsum dolor sit amet.
-                    </a>
-                </div>
-                <div class="card-icons">
-                    <div class="icon">
-                        <i class="ti-heart"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                    <div class="icon">
-                        <i class="ti-comment"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                    <div class="icon">
-                        <i class="ti-eye"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <a class="card-img" href="edit_blog.html"><img src="../img/person2.jpg" alt="Image"></a>
-                <div class="card-details">
-                    <a href="edit_blog.html" class="card-title">
-                        Lorem ipsum dolor sit amet.
-                    </a>
-                </div>
-                <div class="card-icons">
-                    <div class="icon">
-                        <i class="ti-heart"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                    <div class="icon">
-                        <i class="ti-comment"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                    <div class="icon">
-                        <i class="ti-eye"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <a class="card-img" href="edit_blog.html"><img src="../img/person2.jpg" alt="Image"></a>
-                <div class="card-details">
-                    <a href="edit_blog.html" class="card-title">
-                        Lorem ipsum dolor sit amet.
-                    </a>
-                </div>
-                <div class="card-icons">
-                    <div class="icon">
-                        <i class="ti-heart"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                    <div class="icon">
-                        <i class="ti-comment"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                    <div class="icon">
-                        <i class="ti-eye"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <a class="card-img" href="edit_blog.html"><img src="../img/person2.jpg" alt="Image"></a>
-                <div class="card-details">
-                    <a href="edit_blog.html" class="card-title">
-                        Lorem ipsum dolor sit amet.
-                    </a>
-                </div>
-                <div class="card-icons">
-                    <div class="icon">
-                        <i class="ti-heart"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                    <div class="icon">
-                        <i class="ti-comment"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                    <div class="icon">
-                        <i class="ti-eye"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <a class="card-img" href="edit_blog.html"><img src="../img/person2.jpg" alt="Image"></a>
-                <div class="card-details">
-                    <a href="edit_blog.html" class="card-title">
-                        Lorem ipsum dolor sit amet.
-                    </a>
-                </div>
-                <div class="card-icons">
-                    <div class="icon">
-                        <i class="ti-heart"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                    <div class="icon">
-                        <i class="ti-comment"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                    <div class="icon">
-                        <i class="ti-eye"></i>
-                        <span class="icon-number">0</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h2 class="dashboard-title" id="blog-count"></h2>
+        <div class="cards"></div>
     </section>
 </main>
 <footer class="footer">
@@ -270,4 +142,5 @@
     firebase.analytics();
 </script>
 <script type="text/javascript" src="../js/auth.js"></script>
+<script type="text/javascript" src="../js/admin/dashboard.js"></script>
 </html>

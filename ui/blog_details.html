@@ -6,10 +6,15 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500,700,900" rel="stylesheet">
     <link href="./css/main.css" rel="stylesheet">
     <link href="./css/queries.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/loader.css">
     <link rel="stylesheet" href="icons/themify-icons.css">
     <title>Blog</title>
 </head>
 <body>
+<div id="loader-wrapper">
+    <div class="lds-ripple"><div></div><div></div></div>
+    <h3>Loading blog...</h3>
+</div>
 <div class="mobile-navigation">
     <input class="nav_checkbox" id="navi-toggle" type="checkbox">
     <label class="mobile-nav-btn" for="navi-toggle">
@@ -77,57 +82,35 @@
 <main>
     <section class="section-article">
         <div class="article-details">
-            <img src="img/person2.jpg" class="article-image"/>
+            <img src="" class="article-image"/>
             <div class="article-content">
                 <h2 class="article-title">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 </h2>
                 <p class="article-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto autem beatae
-                    dignissimos distinctio ducimus est ex, fugit harum iure, minus molestias odit reiciendis tempora,
-                    veritatis. Architecto delectus maxime odit!
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt facilis in maiores quod saepe,
-                    sequi. Architecto cum dolorum earum, hic impedit maiores minima numquam officiis optio quaerat
-                    quidem saepe, voluptates!
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto culpa eaque incidunt laboriosam
-                    minima non nostrum. Animi doloremque explicabo nam perspiciatis ratione rem sit? Autem laboriosam
-                    perspiciatis voluptatibus? Quisquam, reprehenderit.
+
                 </p>
                 <div class="article-icon">
                     <div class="icon">
-                        <span class="ti-heart icon-article"></span>
-                        <span class="icon-number">12</span>
+                        <span class="ti-heart icon-article" onclick="addLike()"></span>
+                        <span class="icon-number" id="likes">0</span>
                     </div>
                 </div>
                 <div class="article-comments">
-                    <h3 class="comments-title">5 Comments</h3>
+                    <h3 class="comments-title"><span id="comment-number">0</span> Comments</h3>
                     <div class="comments">
-                        <div class="comment">
-                            <h3 class="comment-name">Alain MUCYO</h3>
-                            <div class="comment-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur at enim hic ipsa
-                                modi, nam nostrum officia recusandae reiciendis saepe. Blanditiis dignissimos ea numquam
-                                obcaecati porro praesentium similique velit! Voluptatum.
-                            </div>
-                        </div>
-                        <div class="comment">
-                            <h3 class="comment-name">Alain MUCYO</h3>
-                            <div class="comment-body">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur at enim hic ipsa
-                                modi, nam nostrum officia recusandae reiciendis saepe. Blanditiis dignissimos ea numquam
-                                obcaecati porro praesentium similique velit! Voluptatum.
-                            </div>
-                        </div>
+
                     </div>
-                    <form class="comment-form" action="#" method="post">
+                    <form class="comment-form" action="#" onsubmit="addComment(event)" id="comment-form" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Names"/>
+                            <input type="text" class="form-input" id="names" placeholder="Names"/>
+                            <span class="text-invalid" id="names_invalid"></span>
                         </div>
                         <div class="form-group">
-                            <textarea name="" id="" class="form-input" placeholder="Leave a comment..."></textarea>
+                            <textarea name="" id="content" class="form-input" placeholder="Leave a comment..."></textarea>
+                            <span class="text-invalid" id="content_invalid"></span>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary">Post Comment</button>
+                            <button class="btn btn-primary" id="submitBtn">Post Comment</button>
                         </div>
                     </form>
                 </div>
@@ -136,24 +119,6 @@
         <div class="article-recommend">
             <h4 class="recommend-title">Recommended articles </h4>
             <div class="recommended-list">
-                <a href="#" class="recommended-article">
-                    <img src="img/person2.jpg" class="recommended-image" />
-                    <div class="recommended-title">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    </div>
-                </a>
-                <a href="#" class="recommended-article">
-                    <img src="img/person2.jpg" class="recommended-image" />
-                    <div class="recommended-title">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    </div>
-                </a>
-                <a href="#" class="recommended-article">
-                    <img src="img/person2.jpg" class="recommended-image" />
-                    <div class="recommended-title">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    </div>
-                </a>
             </div>
         </div>
     </section>
@@ -175,4 +140,27 @@
     </div>
 </footer>
 </body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyA-C-kJkXtxlOBvyjn4VN3RAIOPaGQwLi8",
+        authDomain: "my-brand-2769a.firebaseapp.com",
+        databaseURL: "https://my-brand-2769a.firebaseio.com",
+        projectId: "my-brand-2769a",
+        storageBucket: "my-brand-2769a.appspot.com",
+        messagingSenderId: "136564187312",
+        appId: "1:136564187312:web:d08827f9e4f3a1ffed9b75",
+        measurementId: "G-S68C500M6K"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+</script>
+<!--<script type="text/javascript" src="js/auth.js"></script>-->
+<script type="text/javascript" src="js/tools/form-validator.js"></script>
+<script type="text/javascript" src="js/blog/show.js"></script>
 </html>
