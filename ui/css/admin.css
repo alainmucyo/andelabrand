@@ -169,3 +169,6 @@
     object-position: center;
     transform: translateY(50%);
 }
+.profile .form{
+    margin-top: 6rem;
+}
