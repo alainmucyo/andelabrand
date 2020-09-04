@@ -11,7 +11,6 @@ function plusSlides(n) {
 function showSlides(n) {
     var i;
     var slides = document.getElementsByClassName("slide");
-    console.log(slides.length);
     if (n > slides.length) {
         slideIndex = 1
     }
@@ -30,7 +29,7 @@ document.getElementById("contact_form").addEventListener("submit", function (eve
     var email = document.getElementById("email");
     var message = document.getElementById("message");
     var submitBtn = document.getElementById("submit");
-    var name_valid = isInputValid(name,false,3,20);
+    var name_valid = isInputValid(name, false, 3, 20);
     var email_valid = isInputValid(email, true);
     var message_valid = isInputValid(message, false, 10)
     if (!name_valid || !email_valid || !message_valid)
@@ -54,5 +53,20 @@ document.getElementById("contact_form").addEventListener("submit", function (eve
             alertDanger.style.display = "block";
         });
 });
+getCurrentUser()
 
+function getCurrentUser() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(storePosition);
+    }
+}
 
+function storePosition(position) {
+    var db = firebase.firestore();
+    const {latitude, longitude} = position.coords;
+    var today = new Date().toISOString().slice(0, 10);
+    db.collection("visitors").add({
+        latitude, longitude, created_at: today
+    })
+
+}

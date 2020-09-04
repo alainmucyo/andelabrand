@@ -1,9 +1,6 @@
 firebase.auth().onAuthStateChanged(function (user) {
     // var loginMenu=document.getElementById("login");
-
-    if (user) {
-
-    } else {
+    if (!user) {
         window.location="../login.html"
     }
 });
