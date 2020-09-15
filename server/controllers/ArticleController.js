@@ -13,10 +13,8 @@ class ArticleController {
             return NewError(res, 500, "Server error")
         }
     }
-
     static async store(req, res) {
         try {
-            if (!req.body) return NewError(res, 422, "Input fields are required")
             const {error} = articleValidation(req.body);
             if (error)
                 return NewError(res, 422, error.details[0].message)
@@ -32,12 +30,53 @@ class ArticleController {
             return NewError(res, 500, "Server error")
         }
     }
-
     static async show(req, res) {
         try {
-            const article = await Article.findOne({_id: req.params.id})
+            const article = await Article.findOne({_id: req.params.id}).populate("comments")
             if (!article) return NewError(res, 404, "Article not found!")
             return JsonResponse(res, "Article found!", article)
+        } catch (e) {
+            return NewError(res, 404, "Article not found")
+        }
+    }
+
+    static async update(req, res) {
+        try {
+            const {error} = articleValidation(req.body);
+            if (error)
+                return NewError(res, 422, error.details[0].message)
+
+            const article = await Article.findOne({_id: req.params.id})
+            if (!article) return NewError(res, 404, "Article not found!")
+
+            if (req.body.title)
+                article.title = req.body.title
+            if (req.body.content)
+                article.content = req.body.content
+            if (req.file && req.file.path)
+                article.image = req.file.path
+
+            await article.save()
+
+            return JsonResponse(res, "Article updated!", article, 200)
+        } catch (e) {
+            return NewError(res, 404, "Article not found")
+        }
+    }
+
+    static async destroy(req, res) {
+        try {
+            await Article.deleteOne({_id: req.params.id})
+            return JsonResponse(res, "Article Deleted!", null)
+        } catch (e) {
+            return NewError(res, 404, "Article not found")
+        }
+    }
+    static async addLike(req, res) {
+        try {
+            await Article.updateOne({_id: req.params.id}, {$inc: {likes: 1}})
+            const article = await Article.findOne({_id: req.params.id})
+            return JsonResponse(res, "Like added!", article)
         } catch (e) {
             return NewError(res, 404, "Article not found")
         }
