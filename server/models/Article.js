@@ -6,7 +6,8 @@ const Schema = mongoose.Schema({
     content: String,
     views: {type: Number, default: 0},
     likes: {type: Number, default: 0},
-    comments: {type: Number, default: 0},
+    comments_count: {type: Number, default: 0},
+    comments: [{type: mongoose.Schema.Types.ObjectID, ref: "Comment"}],
     createdAt: {type: Date, default: Date.now},
 })
 

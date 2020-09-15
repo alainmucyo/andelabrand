@@ -10,7 +10,6 @@ class QueryController {
     }
 
     static async store(req, res) {
-        if (!req.body) return NewError(res, 422, "Input fields are required")
         const {error} = queryValidation(req.body);
 
         if (error) {
