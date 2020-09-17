@@ -3,6 +3,7 @@ import {JsonResponse} from "../utils/response";
 import Article from "../models/Article";
 import articleValidation from "../validations/article.validator";
 import multer from 'multer'
+import cloudinary from "../config/cloudinary";
 
 class ArticleController {
     static async index(req, res) {
@@ -13,23 +14,38 @@ class ArticleController {
             return NewError(res, 500, "Server error")
         }
     }
+
     static async store(req, res) {
         try {
             const {error} = articleValidation(req.body);
             if (error)
                 return NewError(res, 422, error.details[0].message)
             if (!req.file) return NewError(res, 422, "Image is required")
-            const article = new Article({
-                title: req.body.title,
-                image: req.file.path,
-                content: req.body.content,
-            })
-            await article.save()
-            return JsonResponse(res, "Article Created!", article, 201)
+
+            const path = req.file.path
+            const uniqueFilename = new Date().toISOString()
+
+            cloudinary.uploader.upload(
+                path,
+                {public_id: `blog/${uniqueFilename}`, tags: `blog`},
+                async (err, image) => {
+                    if (err) return res.send(err)
+                    console.log(image)
+                    const article = new Article({
+                        title: req.body.title,
+                        image: image.url,
+                        content: req.body.content,
+                    })
+                    await article.save()
+                    return JsonResponse(res, "Article Created!", article, 201)
+                }
+            )
+
         } catch (e) {
             return NewError(res, 500, "Server error")
         }
     }
+
     static async show(req, res) {
         try {
             const article = await Article.findOne({_id: req.params.id}).populate("comments")
@@ -51,14 +67,29 @@ class ArticleController {
 
             if (req.body.title)
                 article.title = req.body.title
+
             if (req.body.content)
                 article.content = req.body.content
-            if (req.file && req.file.path)
-                article.image = req.file.path
 
-            await article.save()
+            if (req.file && req.file.path) {
 
-            return JsonResponse(res, "Article updated!", article, 200)
+                const path = req.file.path
+                const uniqueFilename = new Date().toISOString()
+
+                cloudinary.uploader.upload(
+                    path,
+                    {public_id: `blog/${uniqueFilename}`, tags: `blog`},
+                    async (err, image) => {
+                        if (err) return res.send(err)
+                        article.image = image.url
+                        await article.save()
+                        return JsonResponse(res, "Article updated!", article, 200)
+                    }
+                )
+            } else {
+                await article.save()
+                return JsonResponse(res, "Article updated!", article, 200)
+            }
         } catch (e) {
             return NewError(res, 404, "Article not found")
         }
@@ -72,6 +103,7 @@ class ArticleController {
             return NewError(res, 404, "Article not found")
         }
     }
+
     static async addLike(req, res) {
         try {
             await Article.updateOne({_id: req.params.id}, {$inc: {likes: 1}})
