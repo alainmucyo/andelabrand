@@ -22,6 +22,8 @@ class AuthController {
     static async userDetails(req, res) {
         try {
             const user = await User.findOne({_id: req.user.id})
+            if (!user)
+                return NewError(res, 404, "User not found")
             return JsonResponse(res, "User found", {
                 _id: user.id,
                 name: user.name,
@@ -34,16 +36,21 @@ class AuthController {
     }
 
     static async login(req, res) {
-        if (!req.body) return NewError(res, 422, "Email and password are required")
-        const user = await User.findOne({email: req.body.email})
-        if (!user)
-            return NewError(res, 422, "Invalid credentials")
-        const isPasswordValid = await bcrypt.compare(req.body.password, user.password)
-        if (!isPasswordValid)
-            return NewError(res, 422, "Invalid credentials")
+        try {
+            if (!req.body) return NewError(res, 422, "Email and password are required")
+            const user = await User.findOne({email: req.body.email})
+            if (!user)
+                return NewError(res, 422, "Invalid credentials")
+            const isPasswordValid = await bcrypt.compare(req.body.password, user.password)
+            if (!isPasswordValid)
+                return NewError(res, 422, "Invalid credentials")
 
-        const token = generateToken(user);
-        return JsonResponse(res, "Login succeed", {token})
+            const token = generateToken(user);
+            return JsonResponse(res, "Login succeed", {token})
+        }
+        catch (e) {
+            return NewError(res, 500, "Error occurred")
+        }
     }
 }
 
