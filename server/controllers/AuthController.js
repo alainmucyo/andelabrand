@@ -3,6 +3,8 @@ import {JsonResponse} from "../utils/response";
 import bcrypt from "bcrypt";
 import User from "../models/User";
 import {generateToken} from "../utils/passport";
+import {userValidation} from "../validations/user.validator";
+import cloudinary from "../config/cloudinary";
 
 class AuthController {
     static async index(req, res) {
@@ -47,8 +49,46 @@ class AuthController {
 
             const token = generateToken(user);
             return JsonResponse(res, "Login succeed", {token})
+        } catch (e) {
+            return NewError(res, 500, "Error occurred")
         }
-        catch (e) {
+    }
+
+    static async profile(req, res) {
+        try {
+            const user = await User.findOne({_id: req.user.id})
+            if (!user)
+                return NewError(res, 404, "User not found")
+            const {error} = userValidation(req.body)
+            if (error)
+                return NewError(res, 422, error.details[0].message)
+
+            if (req.body.old_password && req.body.password) {
+                const oldPasswordValid = await bcrypt.compare(req.body.old_password, user.password)
+                if (!oldPasswordValid)
+                    return NewError(res, 422, "Invalid old password credentials")
+
+                user.password = await bcrypt.hash(req.body.password, 12)
+            }
+            const userExists = await User.findOne({email: req.body.email, _id: {$ne: user._id}})
+            if (userExists)
+                return NewError(res, 422, "Email has already been taken")
+
+            user.name = req.body.name
+            user.email = req.body.email
+            if (req.file && req.file.path) {
+                const path = req.file.path
+                const uniqueFilename = new Date().toISOString()
+                const image = await cloudinary.uploader.upload(path, {
+                    public_id: `blog/${uniqueFilename}`,
+                    tags: `blog`
+                })
+                user.image = image.url
+                fs.unlinkSync(path)
+            }
+            await user.save()
+            return JsonResponse(res, "Profile updated successfully!", {user})
+        } catch (e) {
             return NewError(res, 500, "Error occurred")
         }
     }

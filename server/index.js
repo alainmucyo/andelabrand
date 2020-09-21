@@ -4,6 +4,7 @@ import queryRoutes from "./router/query.routes";
 import articleRoutes from "./router/article.routes";
 import commentRoutes from "./router/comment.routes";
 import authRoutes from "./router/auth.routes";
+import adminRoutes from "./router/admin.routes";
 import {upload} from "./utils/file-uploader";
 import passport from "passport"
 import {jwtStrategy} from "./config/passport";
@@ -19,6 +20,7 @@ mongoose.connect(`${process.env.DB_CONNECTION_URL}/${process.env.DB_DATABASE}`, 
         app.use("/api/article", articleRoutes)
         app.use("/api/comment", commentRoutes)
         app.use("/api/auth", authRoutes)
+        app.use("/api/admin", adminRoutes)
         app.use(express.static('storage'))
         passport.use(jwtStrategy)
         app.use(passport.initialize());
