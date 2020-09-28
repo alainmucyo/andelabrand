@@ -7,7 +7,7 @@ script:
   - cd server/
   - npm ci
   - npm test
-  - npm coverage
+  - npm run coverage
 
 after_success:
   - npm run coveralls
