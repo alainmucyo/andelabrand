@@ -5,15 +5,15 @@ export const cloudinaryUpload = async path => {
     const uniqueFilename = new Date().toISOString()
     // const folder = process.env.APP_ENV == "test" ? process.env.CLOUDINARY_TEST_FOLDER : process.env.CLOUDINARY_PROD_FOLDER
    const folder= process.env.CLOUDINARY_TEST_FOLDER
-    // try {
+    try {
         const {url} = await cloudinary.upload(path, {
             public_id: `${folder}/${uniqueFilename}`,
             tags: folder
         })
         fs.unlinkSync(path)
         return url
-    /*} catch (e) {
+    } catch (e) {
 
         return null
-    }*/
+    }
 }
