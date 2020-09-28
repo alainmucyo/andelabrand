@@ -162,15 +162,6 @@ export const articleTest = () => {
                 done()
             })
     })
-    it("It should delete article with valid ID.", done => {
-        chai.request(app)
-            .delete(route + "/"+articleId)
-            .set("Authorization", "Bearer " + token)
-            .end((err, res) => {
-                expect(res).to.have.status(200)
-                done()
-            })
-    })
     it("It should show admin reports", done => {
         chai.request(app)
             .get("/api/admin/reports")
@@ -180,4 +171,14 @@ export const articleTest = () => {
                 done()
             })
     })
+    it("It should delete article with valid ID.", done => {
+        chai.request(app)
+            .delete(route + "/"+articleId)
+            .set("Authorization", "Bearer " + token)
+            .end((err, res) => {
+                expect(res).to.have.status(200)
+                done()
+            })
+    })
+
 }
