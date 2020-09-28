@@ -8,3 +8,5 @@ script:
   - npm ci
   - npm test
 
+after_success:
+  - npm run coveralls
