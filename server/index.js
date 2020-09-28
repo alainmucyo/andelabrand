@@ -8,12 +8,12 @@ import adminRoutes from "./router/admin.routes";
 import {upload} from "./utils/file-uploader";
 import passport from "passport"
 import {jwtStrategy} from "./config/passport";
-
 const port = process.env.APP_PORT || 5000
-
-mongoose.connect(`${process.env.DB_CONNECTION_URL}/${process.env.DB_DATABASE}`, {useNewUrlParser: true})
+const app = express()
+const database=  process.env.DB_TEST_DATABASE
+// const database = process.env.APP_ENV == "test" ? process.env.DB_TEST_DATABASE : process.env.DB_DATABASE
+mongoose.connect(`${process.env.DB_CONNECTION_URL}/${database}`, {useNewUrlParser: true})
     .then(() => {
-        const app = express()
         app.use(express.json())
         app.use(upload.single("image"))
         app.use("/api/query", queryRoutes)
@@ -28,3 +28,4 @@ mongoose.connect(`${process.env.DB_CONNECTION_URL}/${process.env.DB_DATABASE}`, 
             console.log(`Server started at ${process.env.APP_URL}:${port}`)
         })
     })
+export default app

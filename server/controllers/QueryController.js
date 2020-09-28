@@ -13,7 +13,6 @@ class QueryController {
         const {error} = queryValidation(req.body);
 
         if (error) {
-            console.log("Errors", error.details)
             return NewError(res, 422, error.details[0].message)
         }
         const query = new Query({

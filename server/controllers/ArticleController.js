@@ -2,8 +2,7 @@ import {NewError} from "../utils/errors";
 import {JsonResponse} from "../utils/response";
 import Article from "../models/Article";
 import articleValidation from "../validations/article.validator";
-import cloudinary from "../config/cloudinary";
-import fs from "fs"
+import {cloudinaryUpload} from "../utils/cloudinary-upload";
 
 class ArticleController {
     static async index(req, res) {
@@ -24,20 +23,17 @@ class ArticleController {
             if (!req.file) return NewError(res, 422, "Image is required")
 
             const path = req.file.path
-            const uniqueFilename = new Date().toISOString()
-            const image = await cloudinary.uploader.upload(path, {
-                public_id: `blog/${uniqueFilename}`,
-                tags: `blog`
-            })
-            fs.unlinkSync(path)
+            const url = await cloudinaryUpload(path);
+            if (!url)
+                return NewError(res, 500, "Server error")
+
             const article = new Article({
                 title: req.body.title,
-                image: image.url,
+                image: url,
                 content: req.body.content,
             })
             await article.save()
             return JsonResponse(res, "Article Created!", article, 201)
-
         } catch (e) {
             return NewError(res, 500, "Server error")
         }
@@ -64,23 +60,11 @@ class ArticleController {
 
             const article = await Article.findOne({_id: req.params.id})
             if (!article) return NewError(res, 404, "Article not found!")
-
-            if (req.body.title)
                 article.title = req.body.title
-
-            if (req.body.content)
                 article.content = req.body.content
-
-            if (req.file && req.file.path) {
-                const path = req.file.path
-                const uniqueFilename = new Date().toISOString()
-                const image = await cloudinary.uploader.upload(path, {
-                    public_id: `blog/${uniqueFilename}`,
-                    tags: `blog`
-                })
-                article.image = image.url
-                fs.unlinkSync(path)
-            }
+               if (req.file) {
+                   article.image = await cloudinaryUpload(req.file.path)
+               }
             await article.save()
             return JsonResponse(res, "Article updated!", article, 200)
 
@@ -92,7 +76,7 @@ class ArticleController {
     static async destroy(req, res) {
         try {
             await Article.deleteOne({_id: req.params.id})
-            return JsonResponse(res, "Article Deleted!", null)
+            return JsonResponse(res, "Article Deleted!", null, 200)
         } catch (e) {
             return NewError(res, 404, "Article not found")
         }
@@ -103,7 +87,7 @@ class ArticleController {
             const article = await Article.findOne({_id: req.params.id})
             article.likes++
             await article.save
-            return JsonResponse(res, "Like added!", article)
+            return JsonResponse(res, "Like added!", article, 200)
         } catch (e) {
             return NewError(res, 404, "Article not found")
         }

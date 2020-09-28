@@ -25,7 +25,7 @@ class AdminController {
                 comments: group[0].comments
             })
         } catch (e) {
-            console.log(e)
+
             return NewError(res, 404, "Article not found")
         }
     }
