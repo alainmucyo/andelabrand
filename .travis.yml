@@ -13,5 +13,6 @@ notifications:
 
 script:
   - cd server/
+  - npm ci
   - npm test
 
