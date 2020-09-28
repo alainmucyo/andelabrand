@@ -6,7 +6,7 @@ import app from "../../index"
 import {articles} from "./article.data";
 import {generateToken} from "../../utils/passport";
 import {mockUser} from "../mock-user.data";
-
+import fs from "fs"
 chai.use(chaiHttp)
 const route = "/api/article"
 const token = generateToken(mockUser)
@@ -19,7 +19,7 @@ export const articleTest = () => {
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .field("title", articles.valid.title)
             .field("content", articles.valid.content)
-            .attach("image", "/home/alain/Pictures/user.png")
+            .attach("image", "storage/user.jpg")
             .end((err, res) => {
                 articleId = res.body.data._id
                 expect(res).to.have.status(201)
@@ -77,7 +77,7 @@ export const articleTest = () => {
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .field("title", articles.valid.title)
             .field("content", articles.valid.content)
-            .attach("image", "/home/alain/Pictures/user.png")
+            .attach("image", "storage/user.jpg")
             .end((err, res) => {
                 expect(res).to.have.status(200)
                 done()

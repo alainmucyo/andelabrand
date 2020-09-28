@@ -8,18 +8,17 @@ import cloudinary from "../config/cloudinary";
 import {cloudinaryUpload} from "../utils/cloudinary-upload";
 
 class AuthController {
-    /*   static async index(req, res) {
-           const encryptedPassword = await bcrypt.hash(req.body.password, 12)
-
-           const user = new User({
-               name: req.body.name,
-               email: req.body.email,
-               image: 'https://res.cloudinary.com/alainmucyo/image/upload/v1600252935/blog/user_yndsrs.png',
-               password: encryptedPassword
-           })
-           await user.save()
-           res.status(201).send(user)
-       }*/
+    static async index(req, res) {
+        const encryptedPassword = await bcrypt.hash(req.body.password, 12)
+        const user = new User({
+            name: req.body.name,
+            email: req.body.email,
+            image: 'https://res.cloudinary.com/alainmucyo/image/upload/v1600252935/blog/user_yndsrs.png',
+            password: encryptedPassword
+        })
+        await user.save()
+        return res.status(201).send(user)
+    }
 
     static async userDetails(req, res) {
         try {
@@ -68,9 +67,9 @@ class AuthController {
 
                 user.password = await bcrypt.hash(req.body.password, 12)
             }
-   /*         const userExists = await User.findOne({email: req.body.email, _id: {$ne: user._id}})
-            if (userExists)
-                return NewError(res, 422, "Email has already been taken")*/
+            /*         const userExists = await User.findOne({email: req.body.email, _id: {$ne: user._id}})
+                     if (userExists)
+                         return NewError(res, 422, "Email has already been taken")*/
 
             user.name = req.body.name
             user.email = req.body.email

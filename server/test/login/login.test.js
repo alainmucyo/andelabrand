@@ -10,7 +10,7 @@ import {articles} from "../article/article.data";
 
 chai.use(chaiHttp)
 const route = "/api/auth/login"
-const token = generateToken(mockUser)
+let token
 export const loginTest = () => {
     it("It should not login with invalid data", done => {
         chai.request(app)
@@ -21,15 +21,16 @@ export const loginTest = () => {
                 done()
             })
     })
-    /* it("It should mock user", done => {
-         chai.request(app)
-             .post("/api/auth/mock")
-             .send({...users.valid,name:"Alain"})
-             .end((err, res) => {
-                 expect(res).to.have.status(201)
-                 done()
-             })
-     })*/
+    it("It should mock user", done => {
+        chai.request(app)
+            .post("/api/auth/mock")
+            .send({...users.valid, name: "Alain"})
+            .end((err, res) => {
+                token = generateToken(res.body)
+                expect(res).to.have.status(201)
+                done()
+            })
+    })
     it("It should login with valid data", done => {
         chai.request(app)
             .post(route)
@@ -104,7 +105,7 @@ export const loginTest = () => {
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .field("name", "MUCYO")
             .field("email", "alainmucyo3@gmail.com")
-            .attach("image", "/home/alain/Pictures/user.png")
+            .attach("image", "storage/user.jpg")
             .end((err, res) => {
                 expect(res).to.have.status(200)
                 done()
