@@ -2,18 +2,8 @@ language: node_js
 node_js:
   - "stable"
 env:
-  - APP_NAME="My Brand"
-  - APP_ENV=test
-  - APP_URL=http://localhost
-  - DB_CONNECTION_URL="mongodb://localhost:27017"
-  - DB_DATABASE=my_brand
-  - DB_TEST_DATABASE=my_brand_test
-  - CLOUDINARY_API_KEY=461354868627151
-  - CLOUDINARY_API_SECRET=jrg3xoWEhtWgfLnqY-TDUh6Y5xc
-  - CLOUDINARY_CLOUD_NAME=alainmucyo
-  - CLOUDINARY_PROD_FOLDER=blogs
-  - CLOUDINARY_TEST_FOLDER=blog_tests
-  - JWT_SECRET="superhighlevelscretpasswordthatnonecancrack"
+  - DB_CONNECTION_URL="mongodb://localhost:27017/my_brand"
+
 
 script:
   - cd server/
