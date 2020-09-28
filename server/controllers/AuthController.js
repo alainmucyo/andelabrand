@@ -5,20 +5,19 @@ import User from "../models/User";
 import {generateToken} from "../utils/passport";
 import {userValidation} from "../validations/user.validator";
 import cloudinary from "../config/cloudinary";
+import {cloudinaryUpload} from "../utils/cloudinary-upload";
 
 class AuthController {
     static async index(req, res) {
-        const password = "password"
-        const encryptedPassword = await bcrypt.hash(password, 12)
-
+        const encryptedPassword = await bcrypt.hash(req.body.password, 12)
         const user = new User({
-            name: "Admin",
-            email: "admin@gmail.com",
+            name: req.body.name,
+            email: req.body.email,
             image: 'https://res.cloudinary.com/alainmucyo/image/upload/v1600252935/blog/user_yndsrs.png',
             password: encryptedPassword
         })
         await user.save()
-        res.send(user)
+        return res.status(201).send(user)
     }
 
     static async userDetails(req, res) {
@@ -57,8 +56,6 @@ class AuthController {
     static async profile(req, res) {
         try {
             const user = await User.findOne({_id: req.user.id})
-            if (!user)
-                return NewError(res, 404, "User not found")
             const {error} = userValidation(req.body)
             if (error)
                 return NewError(res, 422, error.details[0].message)
@@ -70,21 +67,15 @@ class AuthController {
 
                 user.password = await bcrypt.hash(req.body.password, 12)
             }
-            const userExists = await User.findOne({email: req.body.email, _id: {$ne: user._id}})
-            if (userExists)
-                return NewError(res, 422, "Email has already been taken")
+            /*         const userExists = await User.findOne({email: req.body.email, _id: {$ne: user._id}})
+                     if (userExists)
+                         return NewError(res, 422, "Email has already been taken")*/
 
             user.name = req.body.name
             user.email = req.body.email
-            if (req.file && req.file.path) {
+            if (req.file) {
                 const path = req.file.path
-                const uniqueFilename = new Date().toISOString()
-                const image = await cloudinary.uploader.upload(path, {
-                    public_id: `blog/${uniqueFilename}`,
-                    tags: `blog`
-                })
-                user.image = image.url
-                fs.unlinkSync(path)
+                user.image = await cloudinaryUpload(path)
             }
             await user.save()
             return JsonResponse(res, "Profile updated successfully!", {user})

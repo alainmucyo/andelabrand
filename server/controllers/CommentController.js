@@ -12,7 +12,7 @@ class CommentController {
 
             const {error} = commentValidation(req.body);
             if (error) {
-                console.log("Errors", error.details)
+
                 return NewError(res, 422, error.details[0].message)
             }
 
@@ -24,7 +24,7 @@ class CommentController {
             article.comments.push(comment)
             article.comments_count++
             await article.save()
-            return JsonResponse(res, "Comment added", comment)
+            return JsonResponse(res, "Comment added", comment, 201)
         } catch (e) {
             return NewError(res, 404, "Article not found")
         }

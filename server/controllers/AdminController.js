@@ -5,7 +5,7 @@ import Query from "../models/Query";
 
 class AdminController {
     static async reports(req, res) {
-        try {
+        // try {
             const articles = await Article.countDocuments()
             const queries = await Query.countDocuments()
             const group = await Article.aggregate([{
@@ -24,10 +24,10 @@ class AdminController {
                 likes: group[0].likes,
                 comments: group[0].comments
             })
-        } catch (e) {
-            console.log(e)
+       /* } catch (e) {
+
             return NewError(res, 404, "Article not found")
-        }
+        }*/
     }
 }
 

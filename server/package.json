@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "coverage": "nyc --reporter=html --reporter=text mocha --require dotenv/config --require @babel/register --exit || true",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "test": "nyc mocha --require dotenv/config --require @babel/register --exit || true",
     "start": "nodemon --exec babel-node -r dotenv/config index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/runtime": "^7.11.2",
     "bcrypt": "^5.0.0",
+    "cloudinary": "^1.23.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "joi": "^17.2.1",
@@ -25,7 +29,17 @@
     "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
     "@babel/node": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
-    "nodemon": "^2.0.4"
+    "@babel/register": "^7.11.5",
+    "@types/chai-http": "^4.2.0",
+    "babel-plugin-istanbul": "^6.0.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.1.0",
+    "mocha": "^8.1.3",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nodemon": "^2.0.4",
+    "nyc": "^15.1.0"
   }
 }
