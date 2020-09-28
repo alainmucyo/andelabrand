@@ -8,6 +8,7 @@ describe("My brand: ", () => {
     describe("Query: ", queryTest)
     describe("Articles: ", articleTest)
     describe("Delete user", ()=>{
+
         User.collection.remove()
     })
 })

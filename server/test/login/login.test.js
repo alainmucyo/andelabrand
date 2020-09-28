@@ -111,15 +111,7 @@ export const loginTest = () => {
                 done()
             })
     }).timeout(50000)
-    it("It should show admin reports", done => {
-        chai.request(app)
-            .get("/api/admin/reports")
-            .set("Authorization", "Bearer " + token)
-            .end((err, res) => {
-                expect(res).to.have.status(200)
-                done()
-            })
-    })
+
     it("It should not show admin reports without token", done => {
         chai.request(app)
             .get("/api/admin/reports")

@@ -171,4 +171,13 @@ export const articleTest = () => {
                 done()
             })
     })
+    it("It should show admin reports", done => {
+        chai.request(app)
+            .get("/api/admin/reports")
+            .set("Authorization", "Bearer " + token)
+            .end((err, res) => {
+                expect(res).to.have.status(200)
+                done()
+            })
+    })
 }
