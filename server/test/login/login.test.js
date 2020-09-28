@@ -105,7 +105,7 @@ export const loginTest = () => {
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .field("name", "MUCYO")
             .field("email", "alainmucyo3@gmail.com")
-            .attach("image", "storage/user.jpg")
+            .attach("image", "public/user.jpg")
             .end((err, res) => {
                 expect(res).to.have.status(200)
                 done()

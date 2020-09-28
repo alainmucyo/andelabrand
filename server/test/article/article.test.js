@@ -19,7 +19,7 @@ export const articleTest = () => {
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .field("title", articles.valid.title)
             .field("content", articles.valid.content)
-            .attach("image", "storage/user.jpg")
+            .attach("image", "public/user.jpg")
             .end((err, res) => {
                 articleId = res.body.data._id
                 expect(res).to.have.status(201)
@@ -70,14 +70,13 @@ export const articleTest = () => {
             })
     })*/
     it("It should update single article with valid ID and image", done => {
-
         chai.request(app)
             .put(route + "/" + articleId)
             .set("Authorization", "Bearer " + token)
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .field("title", articles.valid.title)
             .field("content", articles.valid.content)
-            .attach("image", "storage/user.jpg")
+            .attach("image", "public/user.jpg")
             .end((err, res) => {
                 expect(res).to.have.status(200)
                 done()

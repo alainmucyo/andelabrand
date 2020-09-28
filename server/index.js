@@ -8,9 +8,10 @@ import adminRoutes from "./router/admin.routes";
 import {upload} from "./utils/file-uploader";
 import passport from "passport"
 import {jwtStrategy} from "./config/passport";
+
 const port = process.env.APP_PORT || 5000
 const app = express()
-const database=  process.env.DB_TEST_DATABASE
+const database = process.env.DB_TEST_DATABASE
 // const database = process.env.APP_ENV == "test" ? process.env.DB_TEST_DATABASE : process.env.DB_DATABASE
 mongoose.connect(`${process.env.DB_CONNECTION_URL}/${database}`, {useNewUrlParser: true})
     .then(() => {
@@ -22,6 +23,7 @@ mongoose.connect(`${process.env.DB_CONNECTION_URL}/${database}`, {useNewUrlParse
         app.use("/api/auth", authRoutes)
         app.use("/api/admin", adminRoutes)
         app.use(express.static('storage'))
+        app.use(express.static('public'))
         passport.use(jwtStrategy)
         app.use(passport.initialize());
         app.listen(port, () => {
