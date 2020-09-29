@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 
+mongoose.set('useFindAndModify', false);
 const Schema = mongoose.Schema({
     title: {type: String, required: true},
     image: {type: String, required: true},

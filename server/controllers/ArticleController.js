@@ -8,8 +8,8 @@ class ArticleController {
     static async index(req, res) {
 
         try {
-            const queries = await Article.find()
-            return JsonResponse(res, "Listing queries!", queries)
+            const articles = await Article.find()
+            return JsonResponse(res, "Listing articles!", articles)
         } catch (e) {
             return NewError(res, 500, "Server error")
         }
@@ -60,11 +60,11 @@ class ArticleController {
 
             const article = await Article.findOne({_id: req.params.id})
             if (!article) return NewError(res, 404, "Article not found!")
-                article.title = req.body.title
-                article.content = req.body.content
-               if (req.file) {
-                   article.image = await cloudinaryUpload(req.file.path)
-               }
+            article.title = req.body.title
+            article.content = req.body.content
+            if (req.file) {
+                article.image = await cloudinaryUpload(req.file.path)
+            }
             await article.save()
             return JsonResponse(res, "Article updated!", article, 200)
 
@@ -84,9 +84,8 @@ class ArticleController {
 
     static async addLike(req, res) {
         try {
+             await Article.findOneAndUpdate({_id: req.params.id},{$inc:{'likes':1}})
             const article = await Article.findOne({_id: req.params.id})
-            article.likes++
-            await article.save
             return JsonResponse(res, "Like added!", article, 200)
         } catch (e) {
             return NewError(res, 404, "Article not found")
