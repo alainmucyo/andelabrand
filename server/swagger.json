@@ -1,0 +1,569 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My brand API",
+    "description": "My brand, A personal blog RESTful API documentation",
+    "contact": {
+      "name": "Alain MUCYO",
+      "email": "alainmucyo3@gmail.com"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Login a user",
+        "parameters": [
+          {
+            "name": "User credentials",
+            "in": "body",
+            "description": "Password and email of a user",
+            "required": true,
+            "schema": {
+              "example": {
+                "email": "alainmucyo3@gmail.com",
+                "password": "password"
+              }
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Login succeed"
+          },
+          "422": {
+            "description": "Incorrect credentials"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/auth/user": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Get current logged in user",
+        "responses": {
+          "200": {
+            "description": "Ok"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/admin/reports": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Get admin statistics",
+        "responses": {
+          "200": {
+            "description": "Ok"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/profile": {
+      "put": {
+        "tags": [
+          "Authentication"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Update user profile",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "User name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "User email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "User password",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "old_password",
+            "in": "formData",
+            "description": "User old password",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "type": "file",
+            "required": false
+          }
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          },
+          "422": {
+            "description": "Validation fails"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/article": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Create a new article",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "title",
+            "description": "Article request title",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "content",
+            "description": "Article request content",
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Article created successfully!"
+          },
+          "422": {
+            "description": "Validation fails"
+          }
+        }
+      },
+      "get": {
+        "summary": "Returns a list of articles.",
+        "description": "This will list all created articles.",
+        "tags": [
+          "Articles"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/article/like/{articleID}": {
+      "put": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Add like to article",
+        "description": "Adds a like to an article",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "articleID",
+            "in": "path",
+            "description": "ID of article to like",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/article"
+            }
+          },
+          "404": {
+            "description": "Article not found"
+          }
+        }
+      }
+    },
+    "/comment/{articleID}": {
+      "post": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Create a new comment",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "articleID",
+            "in": "path",
+            "description": "ID of article to comment",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "Comment",
+            "description": "Comment Body",
+            "schema": {
+              "$ref": "#/definitions/comment"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Comment added successfully!"
+          },
+          "422": {
+            "description": "Validation fails"
+          }
+        }
+      }
+    },
+    "/article/{articleID}": {
+      "get": {
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Find article by ID",
+        "description": "Returns a single article",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "articleID",
+            "in": "path",
+            "description": "ID of article to return",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/article"
+            }
+          },
+          "404": {
+            "description": "Article not found"
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Updates an article",
+        "description": "Update the article",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "articleID",
+            "in": "path",
+            "description": "ID of article that needs to be updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "in": "formData",
+            "description": "Updated title of the article",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "content",
+            "in": "formData",
+            "description": "Updated content of the article",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "description": "Updated file of the article",
+            "required": false,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "422": {
+            "description": "Invalid input"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Articles"
+        ],
+        "summary": "Deletes an article",
+        "description": "Delete a single article",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "articleID",
+            "in": "path",
+            "description": "Article id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Article not found"
+          }
+        }
+      }
+    },
+    "/query": {
+      "post": {
+        "tags": [
+          "Queries"
+        ],
+        "summary": "Create a new query",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Query",
+            "description": "Query Body",
+            "schema": {
+              "$ref": "#/definitions/query"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Article created successfully!"
+          },
+          "422": {
+            "description": "Validation fails"
+          }
+        }
+      },
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Returns a list of queries.",
+        "description": "This will list all created queries.",
+        "tags": [
+          "Queries"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "article": {
+      "type": "object",
+      "required": [
+        "title",
+        "content",
+        "image"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": "1whw2i2si277e37"
+        },
+        "title": {
+          "type": "string",
+          "example": "This is an article"
+        },
+        "content": {
+          "type": "string",
+          "example": "These are some contents"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    },
+    "user": {
+      "type": "object",
+      "required": [
+        "name",
+        "email",
+        "password"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": "1whw2i2si277e37"
+        },
+        "name": {
+          "type": "string",
+          "example": "Alain MUCYO"
+        },
+        "email": {
+          "type": "string",
+          "example": "alainmucyo3@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "password"
+        }
+      }
+    },
+    "query": {
+      "type": "object",
+      "required": [
+        "name",
+        "email",
+        "content"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Alain MUCYO"
+        },
+        "email": {
+          "type": "string",
+          "example": "alainmucyo3@gmail.com"
+        },
+        "content": {
+          "type": "string",
+          "example": "These are some texts"
+        }
+      }
+    },
+    "comment": {
+      "type": "object",
+      "required": [
+        "names",
+        "content"
+      ],
+      "properties": {
+        "names": {
+          "type": "string",
+          "example": "Alain MUCYO"
+        },
+        "content": {
+          "type": "string",
+          "example": "This is some comment"
+        }
+      }
+    }
+  }
+}
