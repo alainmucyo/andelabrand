@@ -1,13 +1,21 @@
 language: node_js
 node_js:
-  - "stable"
+- stable
 services:
-  - mongodb
+- mongodb
 script:
-  - cd server/
-  - npm ci
-  - npm test
-  - npm run coverage
-
+- cd server/
+- npm ci
+- npm test
+- npm run coverage
 after_success:
-  - npm run coveralls
+- npm run coveralls
+branches:
+  only:
+  - deploy
+deploy:
+  provider: heroku
+  api_key:
+    secure: hIQ9wqnrzluEn0gpHKu4gVhkgl0WbsQOVNGKSNq5LJ8cQnRmK1MZmvcs1lDBG7GiVUx1oS+Ek1ir686kxSPn9EByJy6b6pptiE+w5ln2LrGTxGt++n80yfEA3YNVxBmsUtoaMO5BkQ3cpoMvyHl3TCPz16YCpgKETklGo4r5QNYLnpkBLYB9zGK95GUqvm49lmTTFr8H3UMVyhPL+xZauqgHeEWrxdGriv1fsBD2m/eOO4zrJFx6XwZX4i5wttUjoTm30avrqVxFNCrHb6wDkDj1oGOs4O6+9ZGy/UEVNTVPGGYOPGvHO3h+ohbWjAq72sTy27ufSb/d51+pop28VHxevR7x4gTOhMlqpW9f7s6pRODj+K9OX1A1/hD/5+06HQ9tUjOki3NPb+BnaJlTVNFZCmMClEtX6ebOqQsHOqACELhWlk2Gy05GM7rNGE2E1op1/i9OzrhxU3me2CRIxqsk2XJ1a++eY8v0Qb/Lb2pMkvwx5bl8anxQvc/2uyE3IFtzhwTbjzjtvYgICTaAQdsWaTt6nHm+9jYZpWAQGYKYjuSoqlkvvmbBm8XFIdu3bRsjYP+isWrdXvWQ6Ga7V1yTkItWIzizIszFMNF+iyLTy4uZxokPjHDFLm62kRL0i5JEbB5ewAQOGsgP91ClAdDgDl76TnqPc/lakKCHU/w=
+  app:
+    deploy: alainmucyo-staging
