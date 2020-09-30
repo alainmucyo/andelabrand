@@ -2,9 +2,9 @@ import chai from "chai"
 import {expect} from "chai";
 
 const chaiHttp = require("chai-http")
-import app from "../../index"
+import app from "../../src"
 import {queries} from "./query.data";
-import {generateToken} from "../../utils/passport";
+import {generateToken} from "../../src/utils/passport";
 
 chai.use(chaiHttp)
 const route = "/api/query"

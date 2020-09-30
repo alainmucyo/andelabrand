@@ -7,3 +7,11 @@ cloudinary.config({
 });
 
 export default cloudinary.uploader
+/*
+
+"host": "alainmucyo-staging.herokuapp.com",
+    "basePath": "/api",
+    "schemes": [
+    "https",
+    "http"
+],*/

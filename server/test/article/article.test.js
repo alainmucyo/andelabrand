@@ -2,9 +2,9 @@ import chai from "chai"
 import {expect} from "chai";
 
 const chaiHttp = require("chai-http")
-import app from "../../index"
+import app from "../../src"
 import {articles} from "./article.data";
-import {generateToken} from "../../utils/passport";
+import {generateToken} from "../../src/utils/passport";
 import {mockUser} from "../mock-user.data";
 import fs from "fs"
 chai.use(chaiHttp)
