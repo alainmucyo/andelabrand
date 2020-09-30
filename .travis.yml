@@ -10,15 +10,4 @@ script:
 - npm run coverage
 after_success:
 - npm run coveralls
-branches:
-  only:
-  - deploy
-deploy:
-  provider: heroku
-  api_key:
-    secure: UTmmCRcTG6mqlfQsQwZVXDvuRBJVZaFmZ4VL8RpxWDwdAwuw2PXqJ1mari1RBsIp5yb3Zcf1I2ZaqVYdkkkSxDp5sV/GBDOhsXUUOHDTmPVdEUgEdpTEYVsTUTaO5BgvQHOr7vbSz+w4xmoSzLrs9H1OwTx8BzyIR/q1mNG10Y/dUDueVL5xA0fyB+7jky/1wMCnNDLZbxqpbWr/5xd+HstTMJwEuDjxbI7PTTExTfIAI9YGdgo9SP7xldaVuhopJ3BZOGDw/6LOFj4SCl0Hp6ISyobnsqsFpjFegDOTIKAxNXOH1jd5zYBVHTplxSPXrR7kr4FNGYS/G7nDi1xN7wLijoW/ta2EFOeLKg1ua+r//B4+7g1GCxOVnjOa1TTa7V0ATcjp6tjq81BDlcpfeI57uAtRW/SZk/eq6IYZJnXaQmEs9Aralda0t6MLU57S6hIgfSCMPAxi6uwvY1LJM18B9OW6DVwPqGyGidrqyUVyNOMsItiD8CcoGmRIAUOi9CRHz+hUr7wzrOXuKOA87nYajVVUjk6Y7lFMJUkpDEEHe5+Hds5KemL47L/BKMkfB08duwEjnjaewlSwnIBHYeeW1sIEoBKCMP8FGIfK1SLnmdBFxyskoMj0j5lyg8acAl/NBQDVcG9yrQ95BZsY8FATsS0bqnW3RwRDMSD2NbE=
-  app: alainmucyo-staging
-  on:
-    repo: alainmucyo/andelabrand
-    branch: deploy
-  skip_cleanup: 'true'
+
