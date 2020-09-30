@@ -1,33 +1,25 @@
 language: node_js
-
 node_js:
-  - stable
-
+- stable
 services:
-  - mongodb
-
+- mongodb
 cache:
   npm: false
-
 notifications:
   email: false
-
 script:
-  - cd server/
-  - npm ci
-  - npm test
-  - npm run coverage
-
+- cd server/
+- npm ci
+- npm test
+- npm run coverage
 after_success:
-  - npm run coveralls
-
+- npm run coveralls
 branches:
   only:
-    - deploy
-
+  - deploy
 deploy:
   provider: heroku
   api_key:
-    secure: CgrihbTeXwg32eJvAY1lVThQnyaXUSS4OhnKLdInTNYnTFR9kFUZTVq412sip2M9dq0oG1E560RWo8g4vM063nuAEBh+LDcJkqQcGm/d7ZShvngLZ2mycqvsV7hQea+dHIyc6bG60oxeFlDjh2uWnvAwC9f/RUdQsT3kzqn4TKeIzUrV6x8YlPsg3cJpCM3nfD2Z9XsMbkeAO0adHT5uU2CwB/V1NX7LyqtSj3aQ/s2WpB6KkO67x7Xvz5DcmHNDl26EGpk8gLzFc4Kss7GZmqmiZWmLloai2mvc1y6KM2WQJutcQJUYvk3Rb8IfW2zMCIpEv/t4lByzdv7cuPusp7UeOKlU7A3YCB2sMSScRrnJdO3u9U9F0OCRMAfmcGDG5jX5Os6gl6LoF0dAFcrMV86afnmsPkSIoYoxRueSHET4saEEIiJl5MUzeEqdsZ3Kohmq5Cr2D/I3sRV1wvglW7mj88aM12YrO0EDuh8mMQE4lUOKNzP9WmzD+wjRPir8jJHubB/sPMPf6N8RZ/IKWydMKId+rOUTh7GN3ZORLn2g+ETH3FaaJvANM9PAXH+ffXIWMlAiLnPPec6xAQN55J/uDojHXPmWfO5wekCGk91A6kdFbzwU8x86X2Vf+54vyE47njOcfydWg5i5vxguNw3KFpOOxognbcVqiWwn3EY=
+    secure: SFrsMOMR+yLz9iaIB+an5qSf0mRJ+nYiOwNabmDgDRiXwh92w9ctYJaMGMc8TNTA1KM4VIqigx9G7VMNQAru/6ZJPVRM2a4PCmQHrQgiRK0NpGlaPZAN9+hXdK6sVcYPtRhcRxTCUEFAtYH15z52kelRKJmuyO4A5k8cqDWNPXQUS2ypPasxATgUHk/wl38Qavhk74/SLPa9Davep3DcFG3LHSkTwN7hn86AeJyor7wPg8z1Nb8zG/sQLx44hizqyi9t+VXTg3gci1PbISGi3jdMB3t3D6DmpHi5qbPk28/x/7ROtP/EX9KrJWyKKwqU60qzJfseFY8dunoasjIAh5HXSVCFLvB2/B1O++uX7x5BM77/STOkOVqvqMLFfE5bv4xJQA71B+4s5mQNlLjQl66SEqZ/fpHYmeOOqVSIPO8xX6//O5dVBLo2CNpSzNualM3tN74ScBsMkINMXx86Zvti9jIUfXhzchqt4RxjXIQa5QhFTm+YKokQ01OGkiaVthlPI+HkOIGNei8DjpMRmnlZ3VfcD+yFPGF4+XA6R+tOZPMyoFCELPZ73rg0P6DzW3HB6vTAu6yuMjqzWio6Bvv9v1hOqLEfiX74a6N8rMPMvhqFBjgsOOib+1LdtyDQeUI8T+/jGHWLY3CFK7/zlrG/Z7SfyU17X3mM1vMI74I=
   app:
     deploy: alainmucyo-staging
