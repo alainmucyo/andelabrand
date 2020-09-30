@@ -9,7 +9,7 @@
       "email": "alainmucyo3@gmail.com"
     }
   },
-  "host": "alainmucyo-staging.herokuapp.com",
+  "host": "alainmucyo.herokuapp.com",
   "basePath": "/api",
   "schemes": [
     "https",
