@@ -9,9 +9,10 @@
       "email": "alainmucyo3@gmail.com"
     }
   },
-  "host": "localhost:5000",
+  "host": "alainmucyo-staging.herokuapp.com",
   "basePath": "/api",
   "schemes": [
+    "https",
     "http"
   ],
   "paths": {
