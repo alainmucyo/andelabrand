@@ -1,19 +1,31 @@
 language: node_js
+
 node_js:
-- stable
+  - stable
+
 services:
-- mongodb
+  - mongodb
+
+cache:
+  npm: false
+
+notifications:
+  email: false
+
 script:
-- cd server/
-- npm ci
-- npm test
-- npm run coverage
+  - cd server/
+  - npm ci
+  - npm test
+  - npm run coverage
+
 after_success:
-- npm run coveralls
+  - npm run coveralls
+
 branches:
   only:
-  - deploy
-  - develop
+    - deploy
+    - develop
+
 deploy:
   provider: heroku
   api_key:
