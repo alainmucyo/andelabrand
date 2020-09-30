@@ -1,9 +1,9 @@
 import {queryTest} from "./query/query.test";
 import {articleTest} from "./article/article.test";
 import {loginTest} from "./login/login.test";
-import User from "../models/User";
+import User from "../src/models/User";
 import chai, {expect} from "chai";
-import app from "../index";
+import app from "../src";
 
 describe("My brand: ", () => {
     describe("Auth: ",loginTest)

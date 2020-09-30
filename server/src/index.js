@@ -12,13 +12,14 @@ import swaggerJsDoc from "swagger-jsdoc";
 import {serve, setup} from "swagger-ui-express";
 import {swaggerOptions} from "./config/swagger";
 
-const swaggerDocument = require('./swagger.json');
+const swaggerDocument = require('../swagger.json');
 const port = process.env.APP_PORT || 5000
 const app = express()
 // const database = process.env.DB_TEST_DATABASE
-const database = process.env.APP_ENV == "test" ? process.env.DB_TEST_DATABASE : process.env.DB_DATABASE
+// const database = process.env.APP_ENV == "test" ? process.env.DB_TEST_DATABASE : process.env.DB_DATABASE
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-mongoose.connect(`${process.env.DB_CONNECTION_URL}/${database}`, {useNewUrlParser: true})
+
+mongoose.connect(`${process.env.DB_CONNECTION_URL}`, {useNewUrlParser: true})
     .then(() => {
         app.use(express.json())
         app.use(upload.single("image"))
