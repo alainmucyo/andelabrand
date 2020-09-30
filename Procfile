@@ -1,1 +1,1 @@
-web: sh -c 'cd ./server/ && npm run start'
+web: sh -c 'cd ./server/ && npm run prod'
