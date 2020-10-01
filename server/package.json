@@ -24,6 +24,8 @@
     "@babel/runtime": "^7.11.2",
     "bcrypt": "^5.0.0",
     "cloudinary": "^1.23.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "joi": "^17.2.1",
@@ -33,8 +35,7 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "swagger-jsdoc": "^4.2.0",
-    "swagger-ui-express": "^4.1.4",
-    "cross-env": "^7.0.2"
+    "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
     "@types/chai-http": "^4.2.0",

@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from "mongoose"
+import cors from "cors"
 import queryRoutes from "./router/query.routes";
 import articleRoutes from "./router/article.routes";
 import commentRoutes from "./router/comment.routes";
@@ -17,10 +18,10 @@ const port = process.env.PORT || 5000
 const app = express()
 // const database = process.env.DB_TEST_DATABASE
 // const database = process.env.APP_ENV == "test" ? process.env.DB_TEST_DATABASE : process.env.DB_DATABASE
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 mongoose.connect(`${process.env.DB_CONNECTION_URL}`, {useNewUrlParser: true})
     .then(() => {
+        app.use(cors())
         app.use(express.json())
         app.use(upload.single("image"))
         app.use("/api/query", queryRoutes)
