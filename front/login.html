@@ -1,0 +1,42 @@
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
+    <link href="./css/login/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/loader.css">
+    <title>Blog</title>
+</head>
+<body class="login-page">
+<div class="login-container">
+    <form class="login-form loader-container" method="post" action="#" onsubmit="login(event)">
+        <div id="container-loader">
+            <div class="lds-ripple"><div></div><div></div></div>
+        </div>
+        <div class="form-group">
+            <input class="form-input" type="email" id="email" placeholder="Email"/>
+            <span class="text-invalid" id="invalid">Sorry, wrong email or password!</span>
+            <span class="text-invalid" id="email_invalid"></span>
+        </div>
+        <div class="form-group">
+            <input class="form-input" type="password" id="password" placeholder="Password"/>
+            <span class="text-invalid" id="password_invalid"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block loader-block" id="login_btn">
+                Login
+            </button>
+        </div>
+        <div class="not-registered">
+            <span class="not-registered__text">Not An Administrator? </span>
+            <a href="index.html" class="not-registered__link">Back to home</a>
+        </div>
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="js/init.js"></script>
+<script type="text/javascript" src="js/tools/form-validator.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+</html>

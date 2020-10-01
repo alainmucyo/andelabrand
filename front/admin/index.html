@@ -1,0 +1,127 @@
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/admin.css" rel="stylesheet">
+    <link href="../css/queries.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/loader.css">
+    <link rel="stylesheet" href="../icons/themify-icons.css">
+    <title>Admin</title>
+</head>
+<body>
+<div id="loader-wrapper">
+    <div class="lds-ripple"><div></div><div></div></div>
+    <h3>Loading...</h3>
+</div>
+<div class="mobile-navigation">
+    <input class="nav_checkbox" id="navi-toggle" type="checkbox">
+    <label class="mobile-nav-btn" for="navi-toggle">
+        <span class="nav-icon">
+        </span>
+    </label>
+    <div class="mobile-nav-bg">&nbsp;</div>
+    <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li class="nav-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="create_blog.html">Create blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="queries.html">Queries</a>
+            </li>
+            <li class="nav-item">
+                <a href="profile.html">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" onclick="logout()">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="navigation shadow">
+    <div class="logo">
+        <!--    <img src="img/logo.png" class="logo-img" alt=""/>-->
+        <span>Alainmucyo</span>
+    </div>
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="create_blog.html">Create blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="queries.html">Queries</a>
+            </li>
+            <li class="nav-item">
+                <a href="profile.html">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" onclick="logout()">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<main>
+    <section class="admin-dashboard">
+        <div class="dashboard-summary">
+            <div class="icon-card icon-card__primary">
+                <span class="ti-heart icon-card__icon"></span>
+                <div class="icon-card__details">
+                    <h4 class="icon-card__number" id="blog_likes">0</h4>
+                    <span class="icon-card__text">Blogs Likes</span>
+                </div>
+            </div>
+            <div class="icon-card icon-card__secondary">
+                <span class="ti-eye icon-card__icon"></span>
+                <div class="icon-card__details">
+                    <h4 class="icon-card__number" id="blog_views">0</h4>
+                    <span class="icon-card__text">Blogs Views</span>
+                </div>
+            </div>
+            <div class="icon-card icon-card__success">
+                <span class="ti-comment-alt icon-card__icon"></span>
+                <div class="icon-card__details">
+                    <h4 class="icon-card__number" id="blog_comments">0</h4>
+                    <span class="icon-card__text">Comments</span>
+                </div>
+            </div>
+            <div class="icon-card icon-card__blue">
+                <span class="ti-envelope icon-card__icon"></span>
+                <div class="icon-card__details">
+                    <h4 class="icon-card__number" id="contacts">20</h4>
+                    <span class="icon-card__text">Contacts</span>
+                </div>
+            </div>
+        </div>
+        <h2 class="dashboard-title" id="blog-count"></h2>
+        <div class="cards"></div>
+    </section>
+</main>
+<footer class="footer">
+    <p class="footer-details">
+        Copyright &copy; MUCYO M. Alain 2020
+    </p>
+    <div class="footer__icons">
+        <a href="#" class="footer__icons__link">
+            <span class="ti-facebook"></span>
+        </a>
+        <a href="#" class="footer__icons__link">
+            <span class="ti-instagram"></span>
+        </a>
+        <a href="#" class="footer__icons__link">
+            <span class="ti-linkedin"></span>
+        </a>
+    </div>
+</footer>
+</body>
+<script type="text/javascript" src="../js/init.js"></script>
+<script type="text/javascript" src="../js/auth.js"></script>
+<script type="text/javascript" src="../js/admin/dashboard.js"></script>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,500,700,900" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
+    <link href="./css/queries.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/loader.css">
+    <link rel="stylesheet" href="icons/themify-icons.css">
+    <title>Blog</title>
+</head>
+<body>
+<div id="loader-wrapper">
+    <div class="lds-ripple"><div></div><div></div></div>
+    <h3>Loading blog...</h3>
+</div>
+<div class="mobile-navigation">
+    <input class="nav_checkbox" id="navi-toggle" type="checkbox">
+    <label class="mobile-nav-btn" for="navi-toggle">
+        <span class="nav-icon">
+        </span>
+    </label>
+    <div class="mobile-nav-bg">&nbsp;</div>
+    <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li class="nav-item">
+                <a href="index.html#landing">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#section-services">Services</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#section-about">About Me</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#portfolio-section">Portfolio</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#contact-me">Contact Me</a>
+            </li>
+            <li class="nav-item">
+                <a href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="login.html">Login</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="navigation shadow">
+    <div class="logo">
+        <!--    <img src="img/logo.png" class="logo-img" alt=""/>-->
+        <span>Alainmucyo</span>
+    </div>
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="index.html#landing">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#section-services">Services</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#section-about">About Me</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#portfolio-section">Portfolio</a>
+            </li>
+            <li class="nav-item">
+                <a href="index.html#contact-me">Contact Me</a>
+            </li>
+            <li class="nav-item">
+                <a href="blog.html">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="login.html">Login</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<main>
+    <section class="section-article">
+        <div class="article-details">
+            <img src="" class="article-image"/>
+            <div class="article-content">
+                <h2 class="article-title">
+                </h2>
+                <p class="article-text">
+
+                </p>
+                <div class="article-icon">
+                    <div class="icon">
+                        <span class="ti-heart icon-article" onclick="addLike()"></span>
+                        <span class="icon-number" id="likes">0</span>
+                    </div>
+                </div>
+                <div class="article-comments">
+                    <h3 class="comments-title"><span id="comment-number">0</span> Comments</h3>
+                    <div class="comments">
+
+                    </div>
+                    <form class="comment-form" action="#" onsubmit="addComment(event)" id="comment-form" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-input" id="names" placeholder="Names"/>
+                            <span class="text-invalid" id="names_invalid"></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="" id="content" class="form-input" placeholder="Leave a comment..."></textarea>
+                            <span class="text-invalid" id="content_invalid"></span>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" id="submitBtn">Post Comment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="article-recommend">
+            <h4 class="recommend-title">Recommended articles </h4>
+            <div class="recommended-list">
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <p class="footer-details">
+        Copyright &copy; MUCYO M. Alain 2020
+    </p>
+    <div class="footer__icons">
+        <a href="#" class="footer__icons__link">
+            <span class="ti-facebook"></span>
+        </a>
+        <a href="#" class="footer__icons__link">
+            <span class="ti-instagram"></span>
+        </a>
+        <a href="#" class="footer__icons__link">
+            <span class="ti-linkedin"></span>
+        </a>
+    </div>
+</footer>
+</body>
+<script type="text/javascript" src="js/init.js"></script>
+<script type="text/javascript" src="js/tools/form-validator.js"></script>
+<script type="text/javascript" src="js/blog/show.js"></script>
+</html>

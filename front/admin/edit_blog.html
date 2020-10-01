@@ -1,0 +1,148 @@
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/admin.css" rel="stylesheet">
+    <link href="../css/queries.css" rel="stylesheet">
+    <link href="../css/loader.css" rel="stylesheet">
+    <link rel="stylesheet" href="../icons/themify-icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.21.0/ui/trumbowyg.min.css" rel="stylesheet">
+    <title>Blog</title>
+</head>
+<body>
+<div id="loader-wrapper">
+    <div class="lds-ripple"><div></div><div></div></div>
+    <h3>Loading...</h3>
+</div>
+<div class="mobile-navigation">
+    <input class="nav_checkbox" id="navi-toggle" type="checkbox">
+    <label class="mobile-nav-btn" for="navi-toggle">
+        <span class="nav-icon">
+        </span>
+    </label>
+    <div class="mobile-nav-bg">&nbsp;</div>
+    <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li class="nav-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="create_blog.html">Create blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="queries.html">Queries</a>
+            </li>
+            <li class="nav-item">
+                <a href="profile.html">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" onclick="logout()">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="navigation shadow">
+    <div class="logo">
+        <!--    <img src="img/logo.png" class="logo-img" alt=""/>-->
+        <span>Alainmucyo</span>
+    </div>
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="create_blog.html">Create blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="queries.html">Queries</a>
+            </li>
+            <li class="nav-item">
+                <a href="profile.html">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" onclick="logout()">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<main>
+<section class="create-article">
+    <div class="card article-form loader-container">
+        <div id="container-loader">
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    <form action="#" onsubmit="updateBlog(event)" class="form pt-0" id="blog_form">
+        <h2 class="dashboard-title">Edit a blog</h2>
+            <div class="alert alert-danger">
+            </div>
+            <div class="alert alert-success">
+            </div>
+        <div class="form-group">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-input" id="title"  required/>
+            <span class="text-invalid" id="title_invalid"></span>
+        </div>
+        <div class="form-group">
+            <label for="image">Blog Image (Select image to change existing one)</label>
+            <input type="file" class="form-input" id="image"/>
+        </div>
+        <div class="form-group">
+            <label for="body" class="form-label">Blog content</label>
+            <textarea name="" id="body" cols="30" rows="10" class="form-input"
+                      required></textarea>
+            <span class="text-invalid" id="body_invalid"></span>
+        </div>
+            <button class="btn btn-primary" type="submit" id="submit">Edit a blog</button>
+    </form>
+        <div class="article-icon">
+            <div class="icon" style="margin-right: 1rem">
+                <span class="ti-heart icon-article"></span>
+                <span class="icon-number" id="likes"></span>
+            </div>
+            <div class="icon">
+                <span class="ti-eye icon-article"></span>
+                <span class="icon-number" id="views"></span>
+            </div>
+        </div>
+        <div class="article-comments">
+            <h3 class="comments-title"><span id="comment-number"></span> Comments</h3>
+            <div class="comments">
+            </div>
+        </div>
+        <div class="article-btn">
+            <button type="button" class="btn btn-danger btn-sm" id="delete" onclick="deleteArticle(event)">Delete</button>
+        </div>
+    </div>
+</section>
+</main>
+<footer class="footer">
+    <p class="footer-details">
+        Copyright &copy; MUCYO M. Alain 2020
+    </p>
+    <div class="footer__icons">
+        <a href="#" class="footer__icons__link">
+            <span class="ti-facebook"></span>
+        </a>
+        <a href="#" class="footer__icons__link">
+            <span class="ti-instagram"></span>
+        </a>
+        <a href="#" class="footer__icons__link">
+            <span class="ti-linkedin"></span>
+        </a>
+    </div>
+</footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.21.0/trumbowyg.min.js"></script>
+<script type="text/javascript" src="../js/init.js"></script>
+<script type="text/javascript" src="../js/auth.js"></script>
+<script type="text/javascript" src="../js/tools/form-validator.js"></script>
+<script type="text/javascript" src="../js/admin/edit_blog.js"></script>
+</html>

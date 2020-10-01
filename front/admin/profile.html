@@ -1,0 +1,141 @@
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/admin.css" rel="stylesheet">
+    <link href="../css/queries.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/loader.css">
+    <link rel="stylesheet" href="../icons/themify-icons.css">
+    <title>Blog</title>
+</head>
+<body>
+<div id="loader-wrapper">
+    <div class="lds-ripple"><div></div><div></div></div>
+    <h3>Loading...</h3>
+</div>
+<div class="mobile-navigation">
+    <input class="nav_checkbox" id="navi-toggle" type="checkbox">
+    <label class="mobile-nav-btn" for="navi-toggle">
+        <span class="nav-icon">
+        </span>
+    </label>
+    <div class="mobile-nav-bg">&nbsp;</div>
+    <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li class="nav-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="create_blog.html">Create blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="queries.html">Queries</a>
+            </li>
+            <li class="nav-item">
+                <a href="profile.html">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" onclick="logout()">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="navigation shadow">
+    <div class="logo">
+        <!--    <img src="img/logo.png" class="logo-img" alt=""/>-->
+        <span>Alainmucyo</span>
+    </div>
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="index.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="create_blog.html">Create blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="queries.html">Queries</a>
+            </li>
+            <li class="nav-item">
+                <a href="profile.html">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" onclick="logout()">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<main>
+    <section class="section-profile">
+        <div class="profile loader-container">
+            <div id="container-loader">
+                <div class="lds-ripple"><div></div><div></div></div>
+            </div>
+            <div class="profile-image__container">
+                <img src="../img/user.png" id="profile-image" class="profile-image" alt="Image">
+            </div>
+            <form class="form" onsubmit="submitProfile(event)">
+                <div class="alert alert-success">
+                </div>
+                <div class="alert alert-danger">
+                </div>
+                <div class="form-group">
+                    <label for="name">Names</label>
+                    <input type="text" class="form-input" id="name">
+                    <span class="text-invalid" id="name_invalid"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-input" id="email">
+                    <span class="text-invalid" id="email_invalid"></span>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" class="form-input" id="image">
+                </div>
+                <div class="form-group">
+                    <label for="old_password">Old Password</label>
+                    <input type="password" class="form-input" id="old_password">
+                    <span class="text-invalid" id="old_password_invalid"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">New Password</label>
+                    <input type="password" class="form-input" id="password">
+                    <span class="text-invalid" id="password_invalid"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password_confirmation">Confirm Password</label>
+                    <input type="password" class="form-input" id="password_confirmation">
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <p class="footer-details">
+        Copyright &copy; MUCYO M. Alain 2020
+    </p>
+    <div class="footer__icons">
+        <a href="#" class="footer__icons__link">
+            <span class="ti-facebook"></span>
+        </a>
+        <a href="#" class="footer__icons__link">
+            <span class="ti-instagram"></span>
+        </a>
+        <a href="#" class="footer__icons__link">
+            <span class="ti-linkedin"></span>
+        </a>
+    </div>
+</footer>
+</body>
+<script type="text/javascript" src="../js/init.js"></script>
+<script type="text/javascript" src="../js/auth.js"></script>
+<script type="text/javascript" src="../js/tools/form-validator.js"></script>
+<script type="text/javascript" src="../js/admin/profile.js"></script>
+</html>
