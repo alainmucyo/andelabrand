@@ -1,4 +1,4 @@
-document.getElementById("loader-wrapper").style.display = "none";
+
 const adminReports = async () => {
     try {
         const response = await fetch(`${BASE_URL}/admin/reports`, {
@@ -26,6 +26,7 @@ const selectArticles = async () => {
     }
 }
 adminReports().then(({data}) => {
+    document.getElementById("loader-wrapper").style.display = "none";
     document.getElementById("blog-count").innerText = data.articles + " Blog articles";
     document.getElementById("blog_likes").innerText = data.likes;
     document.getElementById("blog_comments").innerText = data.comments;
